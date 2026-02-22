@@ -9,7 +9,7 @@
 <body class="bg-gray-100 min-h-screen flex">
 
   <!-- Sidebar -->
-  <aside class="w-64 bg-blue-600 text-white p-6 hidden md:block">
+  <aside class="w-64 bg-blue-600 text-white p-6 hidden md:block fixed md:relative h-full z-50">
     <h2 class="text-2xl font-bold mb-8">MyApp</h2>
     <nav class="space-y-4">
       <a href="#" class="block hover:bg-blue-700 p-2 rounded transition">🏠 Home</a>
@@ -24,6 +24,12 @@
 
     <!-- Topbar -->
     <header class="bg-white shadow p-4 flex justify-between items-center">
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden text-gray-600 hover:text-gray-800">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
       <h1 class="text-xl font-semibold text-gray-700">
         Dashboard
       </h1>
@@ -72,5 +78,19 @@
 
   </div>
 
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.querySelector('aside');
+    
+    if (menuBtn && sidebar) {
+      menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+        sidebar.classList.toggle('fixed');
+        sidebar.classList.toggle('absolute');
+        sidebar.classList.toggle('left-0');
+      });
+    }
+  </script>
 </body>
 </html>
